@@ -12,7 +12,7 @@ export default function Home() {
           <div className="md:flex-shrink-0">
             <Image
               className="h-64 w-64 md:h-64 md:w-64 object-cover rounded-full mx-auto md:mx-0"
-              src="/static/pic.jpg?height=256&width=256"
+              src="/static/pic.JPG?height=256&width=256"
               alt="Profile"
               width={256}
               height={256}
