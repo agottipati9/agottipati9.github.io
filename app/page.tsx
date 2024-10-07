@@ -1,10 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Mail, LinkedinIcon, Twitter, FileText, Book, Video, Presentation, ExternalLink, GraduationCap, User, FileDown } from 'lucide-react'
+import { Mail, LinkedinIcon, Twitter, FileText, Book, Video, Presentation, GraduationCap, FileDown } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -74,7 +72,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg md:text-xl font-bold text-gray-800">LLM-ABR: Designing Adaptive Bitrate Algorithms via Large Language Models</h3>
                     <p className="text-gray-600 text-base md:text-lg">Zhiyuan He, Aashish Gottipati, Lili Qiu, Francis Y. Yan, Xufang Luo, Kenuo Xu, Yuqing Yang</p>
-                    <p className="text-gray-600 mb-2 text-base md:text-med"><em>HotNets '24</em></p>
+                    <p className="text-gray-600 mb-2 text-base md:text-med">HotNets &apos;24</p>
                     <div className="flex flex-wrap gap-4">
                       <Link href="https://arxiv.org/abs/2404.01617" aria-label="Research paper" className="flex items-center text-gray-600 hover:text-gray-800">
                         <FileText className="h-5 w-5 md:h-6 md:w-6 mr-1" /> Paper
