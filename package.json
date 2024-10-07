@@ -1,12 +1,14 @@
 {
-  "name": "creative-cv",
+  "name": "agottipati9.github.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export",
+    "deploy": "npm run build && npm run export && touch out/.nojekyll && node scripts/generate-sitemap.js",
+    "gh-pages": "gh-pages -d out -t true"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
