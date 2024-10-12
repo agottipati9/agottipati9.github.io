@@ -89,7 +89,7 @@ export default function Home() {
                 <li key="3" className="flex items-start space-x-4">
                   <Book className="h-6 w-6 md:h-8 md:w-8 mt-1 text-gray-600" />
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold text-gray-800">Offline to Online Learning for Personalized Bandwidth Estimation</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-800">Offline to Online Learning for Real-Time Bandwidth Estimation</h3>
                     <p className="text-gray-600 text-base md:text-lg">Aashish Gottipati, Sami Khairy, Gabriel Mittag, Vishak Gopal, Ross Cutler</p>
                     <p className="text-gray-600 mb-2 text-base md:text-med"><em>Arxiv preprint</em></p>
                     <div className="flex flex-wrap gap-4">
