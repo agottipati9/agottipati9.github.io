@@ -59,19 +59,19 @@ export default function ProjectPage() {
                 />
               </div>
               <p className="text-center text-sm text-slate-500 mt-4 italic">
-                 Fig. 1: Merlin's integration into a real-time communication (RTC) stack. It processes network state information to predict available bandwidth, which then guides the video codec's bitrate.
+                 Fig. 1: Merlin&apos;s integration into a real-time communication (RTC) stack. It processes network state information to predict available bandwidth, which then guides the video codec&apos;s bitrate.
               </p>
             </div>
             
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4">Problem & Motivation</h3>
               <p>
-                Delivering consistently high-quality video calls is a major challenge because network conditions are incredibly diverse and constantly changing. Traditional <strong>heuristic-based</strong> algorithms, like those in WebRTC, are robust but rigid; manually tuning their many parameters for each user's unique environment is practically impossible. On the other hand, modern <strong>Reinforcement Learning (RL)</strong> approaches can adapt, but they learn from scratch. This "trial-and-error" process is extremely inefficient, requiring hundreds of thousands of live calls to converge, which is too slow and risky for real-world user experience.
+                Delivering consistently high-quality video calls is a major challenge because network conditions are incredibly diverse and constantly changing. Traditional <strong>heuristic-based</strong> algorithms, like those in WebRTC, are robust but rigid; manually tuning their many parameters for each user&apos;s unique environment is practically impossible. On the other hand, modern <strong>Reinforcement Learning (RL)</strong> approaches can adapt, but they learn from scratch. This &quot;trial-and-error&quot; process is extremely inefficient, requiring hundreds of thousands of live calls to converge, which is too slow and risky for real-world user experience.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Our Approach & Contribution</h3>
               <p>
-                We introduce <strong>Merlin</strong>, a system that achieves the best of both worlds. Instead of building an algorithm from scratch, we transform a battle-tested, expert-designed heuristic (an Unscented Kalman Filter from Microsoft Teams) into a neural network. We use a technique called <strong>Behavioral Cloning</strong>, which allows Merlin to learn the heuristic's sophisticated policy entirely from offline telemetry logs, with zero live network interaction during initial training. This cloned neural network captures years of domain expertise. The key innovation is that this policy can then be efficiently <strong>fine-tuned</strong> on a small amount of live data to personalize it for a user's specific network, avoiding the manual process of tuning network parameters.
+                We introduce <strong>Merlin</strong>, a system that achieves the best of both worlds. Instead of building an algorithm from scratch, we transform a battle-tested, expert-designed heuristic (an Unscented Kalman Filter from Microsoft Teams) into a neural network. We use a technique called <strong>Behavioral Cloning</strong>, which allows Merlin to learn the heuristic&apos;s sophisticated policy entirely from offline telemetry logs, with zero live network interaction during initial training. This cloned neural network captures years of domain expertise. The key innovation is that this policy can then be efficiently <strong>fine-tuned</strong> on a small amount of live data to personalize it for a user&apos;s specific network, avoiding the manual process of tuning network parameters.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Results & Impact</h3>
@@ -103,7 +103,7 @@ export default function ProjectPage() {
                       />
                     </div>
                     <p className="text-center text-sm text-slate-500 mt-3 italic">
-                      Fig. 3: Merlin's approach is far more sample-efficient. Online RL models require ~50,000 calls to converge, whereas Merlin achieves a high-quality policy with a fraction of the live data, thanks to offline pretraining.
+                      Fig. 3: Merlin&apos;s approach is far more sample-efficient. Online RL models require ~50,000 calls to converge, whereas Merlin achieves a high-quality policy with a fraction of the live data, thanks to offline pretraining.
                     </p>
                   </div>
                   

@@ -273,7 +273,7 @@ export default function Home() {
                   Beyond the serious stuff
                 </h3>
                 <p className="text-xl md:text-2xl text-slate-600 leading-relaxed">
-                  My interests are pretty simple: I like to read, stay active, and hangout with my dogs, Dex and Leia. And if I had to rank them, they'd win every time!
+                  My interests are pretty simple: I like to read, stay active, and hangout with my dogs, Dex and Leia. And if I had to rank them, they&apos;d win every time!
                 </p>
               </div>
             </div>

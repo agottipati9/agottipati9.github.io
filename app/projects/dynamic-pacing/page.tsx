@@ -59,19 +59,19 @@ export default function ProjectPage() {
                 />
               </div>
               <p className="text-center text-sm text-slate-500 mt-4 italic">
-                 Fig. 1: Our system's workflow: An initial policy is deployed to collect telemetry from user calls. This data is then clustered to build an "expert" policy, which a neural network is then trained to imitate prior to deployment.
+                 Fig. 1: Our system&apos;s workflow: An initial policy is deployed to collect telemetry from user calls. This data is then clustered to build an &quot;expert&quot; policy, which a neural network is then trained to imitate prior to deployment.
               </p>
             </div>
             
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4">Problem & Motivation</h3>
               <p>
-                 Ever experienced frustrating freezes on a video call over satellite internet? While LEO constellations like Starlink are revolutionizing global connectivity, they create a challenging environment for real-time video. The constant, rapid movement of satellites and the frequent "handovers" between them cause sudden latency spikes and instability. Standard video conferencing tools, designed for stable terrestrial networks, use a rigid "one-size-fits-all" approach for sending data. This static method fails in space—either being too cautious and wasting bandwidth during stable periods or too aggressive during handovers, causing packet loss and a choppy user experience.
+                 Ever experienced frustrating freezes on a video call over satellite internet? While LEO constellations like Starlink are revolutionizing global connectivity, they create a challenging environment for real-time video. The constant, rapid movement of satellites and the frequent handovers between them cause sudden latency spikes and instability. Standard video conferencing tools, designed for stable terrestrial networks, use a rigid &quot;one-size-fits-all&quot; approach for sending data. This static method fails in space—either being too cautious and wasting bandwidth during stable periods or too aggressive during handovers, causing packet loss and a choppy user experience.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Our Approach & Contribution</h3>
               <p>
-                 Our solution was to design a smarter, dynamic system that anticipates and adapts to the satellite network's behavior. Instead of a single static rule, we developed a <strong>handover-aware</strong> policy that adjusts how it sends video data based on predicted satellite handovers. Using a technique called offline imitation learning,  We trained a lightweight Transformer model to mimic an "expert" policy derived from thousands of video call logs. This allows the system to make intelligent decisions in near real-time: it minimizes latency when the connection is stable and prioritizes connection stability during turbulent handover periods.
+                 Our solution was to design a smarter, dynamic system that anticipates and adapts to the satellite network&apos;s behavior. Instead of a single static rule, we developed a <strong>handover-aware</strong> policy that adjusts how it sends video data based on predicted satellite handovers. Using a technique called offline imitation learning,  We trained a lightweight Transformer model to mimic an &quot;expert&quot; policy derived from thousands of video call logs. This allows the system to make intelligent decisions in near real-time: it minimizes latency when the connection is stable and prioritizes connection stability during turbulent handover periods.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Results & Impact</h3>
@@ -98,7 +98,7 @@ export default function ProjectPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
                   <p className="text-center text-sm text-slate-500 italic">
-                      Fig. 2: Video bitrate performance in live Starlink environments, showing our approach ("Ours") maintains higher quality than the default ("Def") and other baselines.
+                      Fig. 2: Video bitrate performance in live Starlink environments, showing our approach (&quot;Ours&quot;) maintains higher quality than the default (&quot;Def&quot;) and other baselines.
                   </p>
                   <p className="text-center text-sm text-slate-500 italic">
                       Fig. 3: Our policy significantly reduces the rate of video freezes per minute compared to the default WebRTC policy on live Starlink networks.

@@ -29,7 +29,7 @@ export default function ProjectPage() {
               </p>
               <div className="flex justify-center flex-wrap gap-4 mt-6">
                 <a
-                  href="https://arxiv.org/pdf/2409.19867" // Conceptual link to the paper
+                  href="https://arxiv.org/pdf/2409.19867"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-white font-semibold shadow-md"
@@ -59,19 +59,19 @@ export default function ProjectPage() {
                 />
               </div>
               <p className="text-center text-sm text-slate-500 mt-4 italic">
-                 Fig. 1: Ivy's simple architecture: A lightweight neural network takes in real-time network data and selects the optimal bandwidth estimation (BWE) algorithm to use.
+                 Fig. 1: Ivy&apos;s simple architecture: A lightweight neural network takes in real-time network data and selects the optimal bandwidth estimation (BWE) algorithm to use.
               </p>
             </div>
             
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4">Problem & Motivation</h3>
               <p>
-                Video call quality can be frustratingly inconsistent because network conditions change constantly—a phenomenon known as "data drift". A single bandwidth estimation (BWE) algorithm that works perfectly on a stable home WiFi might fail miserably on a fluctuating 5G connection. The industry's standard solution—periodically retraining a single model—is inefficient and often leads to "catastrophic forgetting," where improving performance for new conditions degrades performance for old ones. Furthermore, trying to learn new strategies during live calls is impractical, as it can actively harm the user's experience.
+                Video call quality can be frustratingly inconsistent because network conditions change constantly—a phenomenon known as &quot;data drift&quot;. A single bandwidth estimation (BWE) algorithm that works perfectly on a stable home WiFi might fail miserably on a fluctuating 5G connection. The industry&apos;s standard solution—periodically retraining a single model—is inefficient and often leads to &quot;catastrophic forgetting,&quot; where improving performance for new conditions degrades performance for old ones. Furthermore, trying to learn new strategies during live calls is impractical, as it can actively harm the user&apos;s experience.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Our Approach & Contribution</h3>
               <p>
-                Instead of searching for a single "one-size-fits-all" solution, we developed <strong>Ivy</strong>, a "metapolicy" that acts like an orchestrator for BWE algorithms. Ivy's job is not to estimate bandwidth itself, but to dynamically select the best-specialized algorithm for the immediate network conditions. We used a technique called <strong>offline meta-learning</strong>, training Ivy on a fixed dataset of video call telemetry without any live network interaction. Critically, Ivy is optimized directly for user <strong>Quality of Experience (QoE)</strong>—a measure of perceived call quality—rather than just raw network metrics, which don't always correlate with a better experience.
+                Instead of searching for a single &quot;one-size-fits-all&quot; solution, we developed <strong>Ivy</strong>, a &quot;metapolicy&quot; that acts like an orchestrator for BWE algorithms. Ivy&apos;s job is not to estimate bandwidth itself, but to dynamically select the best-specialized algorithm for the immediate network conditions. We used a technique called <strong>offline meta-learning</strong>, training Ivy on a fixed dataset of video call telemetry without any live network interaction. Critically, Ivy is optimized directly for user <strong>Quality of Experience (QoE)</strong>—a measure of perceived call quality—rather than just raw network metrics, which don&apos;t always correlate with a better experience.
               </p>
 
               <h3 className="text-2xl font-semibold text-slate-800 border-l-4 border-blue-500 pl-4 mt-8">Results & Impact</h3>
@@ -91,7 +91,7 @@ export default function ProjectPage() {
                       />
                     </div>
                     <p className="text-center text-sm text-slate-500 mt-3 italic">
-                      Fig. 2: Ivy's performance compared to online QoS-based heuristics in high bandwidth networks. It succeeds by prioritizing user experience (QoE) over network metrics (QoS).
+                      Fig. 2: Ivy&apos;s performance compared to online QoS-based heuristics in high bandwidth networks. It succeeds by prioritizing user experience (QoE) over network metrics (QoS).
                     </p>
                   </div>
                   <div className="flex flex-col">
@@ -103,7 +103,7 @@ export default function ProjectPage() {
                       />
                     </div>
                     <p className="text-center text-sm text-slate-500 mt-3 italic">
-                      Fig. 3: Ivy's offline learning approach is far more data-efficient, achieving ~28% higher QoE than online models trained on the same 1000 call logs.
+                      Fig. 3: Ivy&apos;s offline learning approach is far more data-efficient, achieving ~28% higher QoE than online models trained on the same 1000 call logs.
                     </p>
                   </div>
                   
