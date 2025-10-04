@@ -6,7 +6,7 @@ import { Mail, Linkedin, FileText, GraduationCap, BrainCircuit, Waypoints, Bot, 
 
 export default function Home() {
   const [activeTab, setActiveTab] = React.useState('research');
-  const sliderRef = React.useRef(null);
+  const sliderRef = React.useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
   const images = [
@@ -38,7 +38,7 @@ export default function Home() {
         setCurrentSlide(index);
     };
 
-    let debounceTimer;
+    let debounceTimer: NodeJS.Timeout | undefined;
     const debouncedScrollHandler = () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(handleScroll, 150);
@@ -284,7 +284,14 @@ export default function Home() {
   );
 }
 
-function ProjectItem({ title, paperLink, projectLink, venue}) {
+interface ProjectItemProps {
+  title: string;
+  paperLink?: string;
+  projectLink?: string;
+  venue?: string;
+}
+
+function ProjectItem({ title, paperLink, projectLink, venue }: ProjectItemProps) {
   return (
     <div className="border-l-4 border-slate-200 pl-4 hover:border-blue-500 transition-colors">
       <h4 className="font-semibold text-slate-800 leading-snug mb-3 text-base">{title} {venue && <span className="ml-2 font-normal italic text-slate-500">{venue}</span>}

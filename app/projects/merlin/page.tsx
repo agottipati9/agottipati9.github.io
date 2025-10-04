@@ -1,9 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ArrowLeft, FileText, PlayCircle } from 'lucide-react';
 
-const Link = ({ href, children, ...props }) => <a href={href} {...props}>{children}</a>;
+
+const Link: React.FC<{ href: string; children: ReactNode; className?: string }> = ({ href, children, className, ...props }) => (
+  <a href={href} className={className} {...props}>
+    {children}
+  </a>
+);
 
 export default function ProjectPage() {
   return (
