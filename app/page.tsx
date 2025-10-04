@@ -15,14 +15,14 @@ export default function Home() {
     '/static/dogs/dogs3.PNG?text==Leia',
   ];
 
-  const scrollSlider = (direction) => {
+  const scrollSlider = (direction : number) => {
     if (sliderRef.current) {
         const scrollAmount = sliderRef.current.offsetWidth;
         sliderRef.current.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index : number) => {
     if (sliderRef.current) {
         const scrollAmount = sliderRef.current.offsetWidth * index;
         sliderRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
