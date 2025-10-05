@@ -1,13 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Mail, Linkedin, FileText, GraduationCap, BrainCircuit, Waypoints, Bot, ChevronLeft, ChevronRight, Link as LinkIcon } from 'lucide-react';
+import { Code2, PlayCircle, X, Mail, Linkedin, FileText, GraduationCap, BrainCircuit, Waypoints, Bot, ChevronLeft, ChevronRight, Link as LinkIcon } from 'lucide-react';
 
 export default function Home() {
   const [activeTab, setActiveTab] = React.useState('research');
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [videoModalUrl, setVideoModalUrl] = useState<string | null>(null);
 
   const images = [
     '/static/dogs/dogs1.PNG?text==Dex+Leia',
@@ -166,18 +167,27 @@ export default function Home() {
                     paperLink="https://arxiv.org/pdf/2507.09798"
                     projectLink="/projects/dynamic-pacing"
                     venue="In review"
+                    demoVideoUrl="/static/dynamic-pacing/demo.mp4"
+                    onOpenDemo={setVideoModalUrl}
+                    codeLink="https://github.com/agottipati9/dynamic-pacing-for-real-time-satellite-traffic"
                   />
                   <ProjectItem
                     title="Offline Meta-learning for Real-time Bandwidth Estimation"
                     paperLink="https://arxiv.org/pdf/2409.19867"
                     projectLink="/projects/ivy"
                     venue="In review"
+                    demoVideoUrl="/static/ivy/demo.mp4"
+                    onOpenDemo={setVideoModalUrl}
+                    codeLink="https://github.com/agottipati9/Ivy-Bandwidth-Estimation"
                   />
                   <ProjectItem
                     title="Offline to Online Learning for Real-Time Bandwidth Estimation"
                     paperLink="https://arxiv.org/pdf/2309.13481"
                     projectLink="/projects/merlin"
                     venue="ICC '25"
+                    demoVideoUrl="/static/merlin/demo.mp4"
+                    onOpenDemo={setVideoModalUrl}
+                    codeLink="https://github.com/agottipati9/Merlin-Bandwidth-Estimation"
                   />
                 </div>
               </div>
@@ -221,12 +231,24 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white">Robotics</h3>
-                    <p className="text-purple-50 text-sm">TBD</p>
+                    <p className="text-purple-50 text-sm">Exploratory works in progress</p>
                   </div>
                 </div>
               </div>
               <div className="p-6">
                 <div className="space-y-6">
+                <ProjectItem
+                    title="World Modeling for Planning and Control"
+                    description="Developing predictive models of the environment to enable more efficient and robust planning."
+                  />
+                  <ProjectItem
+                    title="Uncertainty Estimation in World Models"
+                    description="Quantifying predictive uncertainty in world models to enable risk-aware planning."
+                  />
+                  <ProjectItem
+                    title="Extracting Policies from World Models"
+                    description="Investigating methods for deriving optimal behaviors directly from learned world models."
+                  />
                 </div>
               </div>
             </div>
@@ -280,23 +302,70 @@ export default function Home() {
           </div>
         )}
       </div>
+      {/* --- Start of New Code --- */}
+      {/* Conditionally rendered video modal */}
+      {videoModalUrl && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={() => setVideoModalUrl(null)} // Close modal by clicking the background
+        >
+          <div 
+            className="relative bg-white p-2 rounded-xl shadow-2xl max-w-4xl w-full"
+            onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
+          >
+            {/* Close (X) button */}
+            <button
+              onClick={() => setVideoModalUrl(null)}
+              className="absolute -top-3 -right-3 h-9 w-9 bg-white rounded-full flex items-center justify-center text-slate-600 hover:text-slate-900 hover:scale-110 transition-all z-10 shadow-md"
+              aria-label="Close video player"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <div className="aspect-w-16 aspect-h-9">
+              <video 
+                src={videoModalUrl} 
+                controls 
+                autoPlay 
+                className="w-full h-full rounded-lg"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* --- End of New Code --- */}
     </main>
   );
 }
 
 interface ProjectItemProps {
   title: string;
+  description?: string;
   paperLink?: string;
   projectLink?: string;
   venue?: string;
+  demoVideoUrl?: string; // Prop for the demo video URL
+  onOpenDemo?: (url: string) => void; // Prop for the click handler
+  codeLink?: string;
 }
 
-function ProjectItem({ title, paperLink, projectLink, venue }: ProjectItemProps) {
+function ProjectItem({ title, description, paperLink, projectLink, venue, demoVideoUrl, onOpenDemo, codeLink}: ProjectItemProps) {
   return (
     <div className="border-l-4 border-slate-200 pl-4 hover:border-blue-500 transition-colors">
       <h4 className="font-semibold text-slate-800 leading-snug mb-3 text-base">{title} {venue && <span className="ml-2 font-normal italic text-slate-500">{venue}</span>}
       </h4>
-      <div className="flex flex-wrap gap-2">
+      {description && <p className="text-sm text-slate-600 mb-3">{description}</p>}
+      <div className="flex flex-wrap gap-1.5">
+      {projectLink && (
+          <Link
+            href={projectLink}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 rounded-md text-xs font-medium text-blue-700 transition-colors"
+          >
+            <LinkIcon className="h-3.5 w-3.5" />
+            Details
+          </Link>
+        )}
         {paperLink && (
           <a
             href={paperLink}
@@ -308,14 +377,26 @@ function ProjectItem({ title, paperLink, projectLink, venue }: ProjectItemProps)
             Paper
           </a>
         )}
-        {projectLink && (
-          <Link
-            href={projectLink}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 rounded-md text-xs font-medium text-blue-700 transition-colors"
+        {codeLink && (
+           <a
+            href={codeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-md text-xs font-medium text-slate-700 transition-colors"
           >
-            <LinkIcon className="h-3.5 w-3.5" />
-            Details
-          </Link>
+            <Code2 className="h-3.5 w-3.5" />
+            Code
+          </a>
+        )}
+        {/* Conditionally render the Demo button */}
+        {demoVideoUrl && onOpenDemo && (
+          <button
+            onClick={() => onOpenDemo(demoVideoUrl)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-md text-xs font-medium text-slate-700 transition-colors"
+          >
+            <PlayCircle className="h-3.5 w-3.5" />
+            Demo
+          </button>
         )}
       </div>
     </div>

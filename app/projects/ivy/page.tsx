@@ -1,7 +1,7 @@
 "use client";
 
-import React, { ReactNode } from 'react';
-import { ArrowLeft, FileText, PlayCircle } from 'lucide-react';
+import React, { useState, ReactNode } from 'react';
+import { ArrowLeft, FileText, PlayCircle, X } from 'lucide-react';
 
 
 const Link: React.FC<{ href: string; children: ReactNode; className?: string }> = ({ href, children, className, ...props }) => (
@@ -11,6 +11,14 @@ const Link: React.FC<{ href: string; children: ReactNode; className?: string }> 
 );
 
 export default function ProjectPage() {
+  // State to manage the visibility of the video modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function to handle closing the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 font-sans">
       <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
@@ -43,15 +51,22 @@ export default function ProjectPage() {
                   <span>Read Paper</span>
                 </a>
                 <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
+                  href="https://github.com/agottipati9/Ivy-Bandwidth-Estimation"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-slate-100 rounded-lg text-slate-500 font-semibold cursor-not-allowed opacity-60"
-                  aria-disabled="true"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors text-slate-700 font-semibold shadow-md"
+                  >
+                  <FileText className="h-5 w-5" />
+                  <span>View Code</span>
+                </a>
+                {/* Changed from <a> to <button> to trigger the modal */}
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors text-slate-700 font-semibold shadow-md"
                 >
                   <PlayCircle className="h-5 w-5" />
-                  <span>Demo Coming Soon</span>
-                </a>
+                  <span>Watch Demo</span>
+                </button>
               </div>
             </div>
 
@@ -118,6 +133,37 @@ export default function ProjectPage() {
           </div>
         </div>
       </div>
+      {/* Conditionally rendered video modal */}
+            {isModalOpen && (
+              <div 
+                className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+                onClick={closeModal} // Close modal by clicking the background
+              >
+                <div 
+                  className="relative bg-white p-2 rounded-xl shadow-2xl max-w-4xl w-full"
+                  onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside it
+                >
+                  {/* Close (X) button */}
+                  <button
+                    onClick={closeModal}
+                    className="absolute -top-3 -right-3 h-9 w-9 bg-white rounded-full flex items-center justify-center text-slate-600 hover:text-slate-900 hover:scale-110 transition-all z-10 shadow-md"
+                    aria-label="Close video player"
+                  >
+                    <X className="h-6 w-6" />
+                  </button>
+                  <div className="aspect-w-16 aspect-h-9">
+                    <video 
+                      src="/static/ivy/demo.mp4" 
+                      controls 
+                      autoPlay 
+                      className="w-full h-full rounded-lg"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            )}
     </main>
   );
 }
